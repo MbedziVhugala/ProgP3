@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Prog6212.ViewModels.ClaimViewModel>
+
+@{
+    ViewData["Title"] = "My Claims";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>My Claims</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Claim ID</th>
+                    <th>Hours Worked</th>
+                    <th>Hourly Rate</th>
+                    <th>Total Amount</th>
+                    <th>Status</th>
+                    <th>Submitted On</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var claim in Model)
+                {
+                    <tr>
+                        <td>@claim.ClaimId</td>
+                        <td>@claim.HoursWorked</td>
+                        <td>@claim.HourlyRate.ToString("N2")</td>
+                        <td>@claim.TotalAmount.ToString("N2")</td>
+                        <td>@claim.Status</td>
+                        <td>@claim.SubmissionDate.ToString("dd/MM/yyyy")</td>
+                        <td>
+                            <a class="btn btn-sm btn-primary" href="@Url.Action("Details", "Claim", new { id = claim.ClaimId })">View</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

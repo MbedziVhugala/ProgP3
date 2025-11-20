@@ -1,0 +1,51 @@
+﻿@model Prog6212.ViewModels.ClaimViewModel
+
+@{
+    ViewData["Title"] = "Claim Details";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4>Claim Details</h4>
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-4">Claim ID</dt>
+                    <dd class="col-sm-8">#@Model.ClaimId</dd>
+
+                    <dt class="col-sm-4">Lecturer Name</dt>
+                    <dd class="col-sm-8">@Model.LecturerName</dd>
+
+                    <dt class="col-sm-4">Hours Worked</dt>
+                    <dd class="col-sm-8">@Model.HoursWorked</dd>
+
+                    <dt class="col-sm-4">Hourly Rate</dt>
+                    <dd class="col-sm-8">R @Model.HourlyRate.ToString("N2")</dd>
+
+                    <dt class="col-sm-4">Total Amount</dt>
+                    <dd class="col-sm-8">R @Model.TotalAmount.ToString("N2")</dd>
+
+                    <dt class="col-sm-4">Status</dt>
+                    <dd class="col-sm-8">@Model.Status</dd>
+
+                    <dt class="col-sm-4">Submitted On</dt>
+                    <dd class="col-sm-8">@Model.SubmissionDate.ToString("dd/MM/yyyy")</dd>
+
+                    @if (!string.IsNullOrEmpty(Model.SupportingDocumentPath))
+                    {
+                        <dt class="col-sm-4">Supporting Document</dt>
+                        <dd class="col-sm-8">
+                            <a href="~/uploads/@Model.SupportingDocumentPath" target="_blank">View/Download</a>
+                        </dd>
+                    }
+                </dl>
+
+                <a href="@Url.Action("Index", "Claim")" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left"></i> Back to Claims
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
